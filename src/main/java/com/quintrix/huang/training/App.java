@@ -21,10 +21,11 @@ public class App
 		locations.put("Thanalan", "Ul'Dah");
 		locations.put("Black Shroud", "Gridania");
 		locations.put("La Noscea", "Limsa Lominsa");
+		locations.put("Coerthas", "Ishgard");
         locations.forEach((key, value) -> {
         	System.out.println(value + " is in " + key);
         });
-        locations.put("Coerthas", "Ishgard");
+        
         // an alternate usage
         
 		// a stream here
@@ -34,9 +35,12 @@ public class App
 		}
 		
 		// a demo of map
-		List<Integer> mapTester = numbers.stream().map(x->x^2).collect(Collectors.toList());
+		List<Integer> mapTester = numbers.stream().map(x->x*x).collect(Collectors.toList());
 		System.out.println(mapTester);
 		// a demo of filter
+		List<Integer> filterTester = numbers.stream().filter(x->x%2==0).collect(Collectors.toList());
+		System.out.println(filterTester);
+		System.out.println("mapTester holds " + mapTester.stream().count() + " elements" );
         
         // some messing with the time space continuum here
         LocalTime time = LocalTime.now();
