@@ -1,5 +1,8 @@
 package com.quintrix.huang.training;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.time.LocalTime;
 /**
  * Hello world!
@@ -21,9 +24,23 @@ public class App
         locations.forEach((key, value) -> {
         	System.out.println(value + " is in " + key);
         });
-		
-		// a stream here
+        locations.put("Coerthas", "Ishgard");
+        // an alternate usage
         
-        // some fucking with the time space continuum here
+		// a stream here
+        List<Integer> numbers = new ArrayList<>();
+		for (int i = 0; i < 31; i++) {
+			numbers.add(i);
+		}
+		
+		// a demo of map
+		List<Integer> mapTester = numbers.stream().map(x->x^2).collect(Collectors.toList());
+		System.out.println(mapTester);
+		// a demo of filter
+        
+        // some messing with the time space continuum here
+        LocalTime time = LocalTime.now();
+        System.out.println("Time at run: " + time);
+        System.out.println("In 8 hours it will be: " + time.plusHours(8));
     }
 }
