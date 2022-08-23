@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.time.LocalTime;
+import java.time.ZoneId;
 /**
  * Hello world!
  *
@@ -46,5 +47,9 @@ public class App
         LocalTime time = LocalTime.now();
         System.out.println("Time at run: " + time);
         System.out.println("In 8 hours it will be: " + time.plusHours(8));
+        
+        // lets try hopping some time zones
+        LocalTime japanTokyo = LocalTime.now(ZoneId.of("Japan"));
+        System.out.println("It is now " + japanTokyo + " in Japan");
     }
 }
