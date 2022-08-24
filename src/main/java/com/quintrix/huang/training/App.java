@@ -51,5 +51,7 @@ public class App
         // lets try hopping some time zones
         LocalTime japanTokyo = LocalTime.now(ZoneId.of("Japan"));
         System.out.println("It is now " + japanTokyo + " in Japan");
+        
+        SqlTest.TrySql();
     }
 }
