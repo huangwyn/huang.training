@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+@SuppressWarnings("unused")
 public class SqlTest {
 	public static void TrySql() {
 		System.out.println("Begin sql testing...");
@@ -16,6 +17,76 @@ public class SqlTest {
 			conn = DriverManager.getConnection(url, userName, password);
 			
 			System.out.println("Connection successful");
+		} catch (Exception e) {
+			System.out.println("a connection error has occurred");
+			e.printStackTrace();
+		}
+		finally {
+			if (conn != null) {
+				try {
+					System.out.println("Terminating connection");
+					conn.close();
+					System.out.println("Connection terminated");
+				}catch(Exception e) {
+					System.out.println("Termination error");
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	public static void InitSql() {
+		Connection conn = null;
+		try {
+			System.out.println("Forming connection...");
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			String userName = "root";
+			String password = "Matrix242944";
+			String url = "jdbc:MySQL://localhost:3306";
+			conn = DriverManager.getConnection(url, userName, password);
+			
+			System.out.println("Connection successful");
+			
+			// initialize the database
+			// init the department tables
+			Filer.createFile("departments.sql");
+			// init the employee tables
+			Filer.createFile("employees.sql");
+			
+			// insert a few values
+		} catch (Exception e) {
+			System.out.println("a connection error has occurred");
+			e.printStackTrace();
+		}
+		finally {
+			if (conn != null) {
+				try {
+					System.out.println("Terminating connection");
+					conn.close();
+					System.out.println("Connection terminated");
+				}catch(Exception e) {
+					System.out.println("Termination error");
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	public static void SqlQuery(String query) {
+		System.out.println("Begin sql testing...");
+		Connection conn = null;
+		try {
+			System.out.println("Forming connection...");
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			String userName = "root";
+			String password = "Matrix242944";
+			String url = "jdbc:MySQL://localhost:3306";
+			conn = DriverManager.getConnection(url, userName, password);
+			
+			System.out.println("Connection successful");
+			
+			
+			// make the query using the provided arg
 		} catch (Exception e) {
 			System.out.println("a connection error has occurred");
 			e.printStackTrace();

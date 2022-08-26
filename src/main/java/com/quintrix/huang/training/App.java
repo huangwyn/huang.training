@@ -53,5 +53,6 @@ public class App
         System.out.println("It is now " + japanTokyo + " in Japan");
         
         SqlTest.TrySql();
+        SqlTest.InitSql();
     }
 }
