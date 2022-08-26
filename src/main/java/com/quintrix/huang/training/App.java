@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.ZoneId;
 /**
@@ -54,5 +56,20 @@ public class App
         
         SqlTest.TrySql();
         SqlTest.InitSql();
+        ArrayList<String> departments = new ArrayList<String> ();
+        departments.add("R&D");
+        departments.add("Marketing");
+        departments.add("HR");
+        for (String dept : departments) {
+        	SqlTest.SqlUpdate("INSERT INTO departments (dept_name) VALUES ('" + dept + "');");
+        }
+        SqlTest.SqlUpdate("INSERT INTO employees (department_id, employee_name) VALUES ("+ 1 + ",'guy');");
+        SqlTest.SqlUpdate("INSERT INTO employees (department_id, employee_name) VALUES ("+ 2 + ",'joe');");
+        SqlTest.SqlUpdate("INSERT INTO employees (department_id, employee_name) VALUES ("+ 3 + ",'billy');");
+        SqlTest.SqlUpdate("INSERT INTO employees (department_id, employee_name) VALUES ("+ 1 + ",'man');");
+        SqlTest.SqlQuery();
+        SqlTest.SqlUpdate("DROP TABLE employees");
+        SqlTest.SqlUpdate("DROP TABLE departments");
+        
     }
 }
