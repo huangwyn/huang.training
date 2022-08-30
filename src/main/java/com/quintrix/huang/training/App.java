@@ -53,6 +53,7 @@ public class App {
     LocalTime japanTokyo = LocalTime.now(ZoneId.of("Japan"));
     System.out.println("It is now " + japanTokyo + " in Japan");
 
+    // SQL stuff
     SqlTest.TrySql();
     SqlTest.InitSql();
     ArrayList<String> departments = new ArrayList<String>();
